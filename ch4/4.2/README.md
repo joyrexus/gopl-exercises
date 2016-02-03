@@ -1,7 +1,7 @@
 # 4.2
 
 Write a program that prints the SHA256 hash of its standard input by default
-but supports command-line flags to print the SHA384 (`-stronger`) or SHA512 (`-strongest) hash instead.
+but supports command-line flags to print the SHA384 (`-stronger`) or SHA512 (`-strongest`) hash instead.
 
 
 ## Examples
