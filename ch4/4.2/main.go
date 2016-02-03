@@ -10,9 +10,9 @@ import (
 	"os"
 )
 
+// print digest of stdin in hexadecimal
 func main() {
-	s384 := flag.Bool("stronger", false, "Print SHA384 hash")
-	s512 := flag.Bool("strongest", false, "Print SHA512 hash")
+	sha := flag.String("sha", "256", "256 | 384 | 512")
 	flag.Parse()
 
 	bytes, err := ioutil.ReadAll(os.Stdin)
@@ -20,15 +20,14 @@ func main() {
 		log.Fatal("Could not read STDIN:", err)
 	}
 
-	var hash string	// digest of message on stdin in hexadecimal
-
-	switch {
-	case *s384:
-		hash = fmt.Sprintf("%x", sha512.Sum384(bytes))
-	case *s512:
-		hash = fmt.Sprintf("%x", sha512.Sum512(bytes))
+	switch *sha {
+	case "256":
+		fmt.Printf("%x\n", sha256.Sum256(bytes))
+	case "384":
+		fmt.Printf("%x\n", sha512.Sum384(bytes))
+	case "512":
+		fmt.Printf("%x\n", sha512.Sum512(bytes))
 	default:
-		hash = fmt.Sprintf("%x", sha256.Sum256(bytes))
+		fmt.Printf("%s is not a valid option: 256 | 383 | 512\n", *sha)
 	}
-	fmt.Println(hash)
 }
