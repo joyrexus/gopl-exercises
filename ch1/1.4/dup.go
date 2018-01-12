@@ -12,7 +12,7 @@ import (
 func main() {
 	// For each line, keep track of total instances and per file counts
 	type Tally struct {
-		Files map[string]int	// per files counts
+		Files map[string]int	// per file counts
 		Total int
 	}
 	count := make(map[string]*Tally)
@@ -50,4 +50,3 @@ func main() {
 		}
 	}
 }
-
